@@ -20,7 +20,7 @@ def contact(request):
     return render(request,'pages/contact.html')
 
 def skills(request):
-    return HttpResponse('My skills!')
+    return render(request, 'pages/skills.html')
 
 def projects(request):
     return render(request,'pages/projects.html')
