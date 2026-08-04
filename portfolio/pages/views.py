@@ -3,13 +3,13 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    return HttpResponse('Welcome to my Portfolio Website!')
+    return render(request,'pages/home.html')
 
 def about(request):
-    return HttpResponse('About me!')
+    return render(request,'pages/about.html')
 
 def contact(request):
-    return HttpResponse('Contact me!')
+    return render(request,'pages/contact.html')
 
 def skills(request):
     return HttpResponse('My skills!')
