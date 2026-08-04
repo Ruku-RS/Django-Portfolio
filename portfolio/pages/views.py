@@ -23,4 +23,4 @@ def skills(request):
     return HttpResponse('My skills!')
 
 def projects(request):
-    return HttpResponse("My Projects!")
+    return render(request,'pages/projects.html')

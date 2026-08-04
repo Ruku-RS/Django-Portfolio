@@ -1,12 +1,7 @@
+{% extends "pages/base.html"%}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Portfolio</title>
-    <link rel='stylesheet' href="{% static 'pages/css/style.css' %}">
-</head>
-<body>
+{% block content %}
     <h1>👋 Welcome! {{name|upper}}</h1>
     <hr>
     <p> I'm {{name}} currently studying at {{college}}. I'm in {{semester}} semester right now.
@@ -24,5 +19,5 @@
     {% endif %}
 
     <img src="{% static 'pages/images/ai-generated-labrador-retriever-dog-picture.jpg' %}" alt="Profile pic" width='250'>
-</body> 
-</html>
+
+{% endblock %}
