@@ -3,7 +3,15 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    return render(request,'pages/home.html')
+    context ={
+        "name": "Rukman Subedi",
+        "college": "Birendra Multiple Campus",
+        "semester": "8",
+        "profession": "Student",
+        "student": False,
+        "skills":['MERN', 'SEO', 'Digital Marketing', 'Video Editing', 'SQL'],
+    }
+    return render(request,'pages/home.html',context)
 
 def about(request):
     return render(request,'pages/about.html')

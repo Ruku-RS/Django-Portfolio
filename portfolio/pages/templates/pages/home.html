@@ -7,10 +7,22 @@
     <link rel='stylesheet' href="{% static 'pages/css/style.css' %}">
 </head>
 <body>
-    <h1>👋 Welcome!</h1>
+    <h1>👋 Welcome! {{name|upper}}</h1>
     <hr>
-    <h2>This is my portfolio</h2>
-    <p>I'm learning Django and building this portfolio website.</p>
+    <p> I'm {{name}} currently studying at {{college}}. I'm in {{semester}} semester right now.
+
+    {% if student %} {# If student: True , this statement runs #}
+    <p>I'm learning Django and building this portfolio website. I'm a {{profession}}</p>
+
+    {% else %} {# If student: False , this statement runs and show the list of skills #}
+    <p> I'm a professional Django Developer. I also have certain skills: <br></p>
+    {% for skill in skills %}
+    <li style='color: #555'>{{skill}}</li>
+    {%endfor%}
+    <p> I've total of {{skills|length}} skills for now.
+
+    {% endif %}
+
     <img src="{% static 'pages/images/ai-generated-labrador-retriever-dog-picture.jpg' %}" alt="Profile pic" width='250'>
 </body> 
 </html>
