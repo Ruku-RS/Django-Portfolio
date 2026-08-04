@@ -1,12 +1,16 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Portfolio</title>
+    <link rel='stylesheet' href="{% static 'pages/css/style.css' %}">
 </head>
 <body>
     <h1>👋 Welcome!</h1>
     <hr>
     <h2>This is my portfolio</h2>
     <p>I'm learning Django and building this portfolio website.</p>
-</body>
+    <img src="{% static 'pages/images/ai-generated-labrador-retriever-dog-picture.jpg' %}" alt="Profile pic" width='250'>
+</body> 
 </html>
