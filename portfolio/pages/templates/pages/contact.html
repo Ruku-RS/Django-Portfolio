@@ -8,8 +8,13 @@ Contact
 
 {% block content%}
 
-<h1>Contact page</h1>
-<p>Contact: 90344569384</p>
-<p>Email: abc@mail.com
+<h2>Contact Me</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">
+        Send Message
+    </button>
+</form>
 
 {%endblock%}

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Project, Skill
+from .models import Project, Skill, ContactMessage
+
 
 # Register your models here.
 @admin.register(Project)
@@ -25,3 +26,5 @@ class SkillAdmin(admin.ModelAdmin):
         "title",
         "description",
     )
+
+admin.site.register(ContactMessage)

@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+#Project page
 class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -13,9 +14,21 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+#Skill page
 class Skill(models.Model):
     title= models.CharField(max_length=150)
     description= models.TextField()
 
     def __str__(self):
         return self.title
+
+#Contact page
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+    

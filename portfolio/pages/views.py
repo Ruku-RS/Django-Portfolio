@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Project, Skill
-
+from .forms import ContactForm
 
 # Create your views here.
 
-
+# Home
 def home(request):
     context ={
         "name": "Rukman Subedi",
@@ -16,12 +16,25 @@ def home(request):
     }
     return render(request,'pages/home.html',context)
 
+# About
 def about(request):
     return render(request,'pages/about.html')
 
+# Contact
 def contact(request):
-    return render(request,'pages/contact.html')
+    if request.method=='POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('contacts')
+    else:
+        form=ContactForm()
 
+    return render(request,'pages/contact.html',{
+        'form':form
+    })
+
+# Skils
 def skills(request):
     skills= Skill.objects.all()
 
@@ -30,6 +43,7 @@ def skills(request):
     }
     return render(request, 'pages/skills.html',context)
 
+# Projects
 def projects(request):
     projects= Project.objects.order_by("-created_at")
 
@@ -38,6 +52,7 @@ def projects(request):
     }
     return render(request,'pages/projects.html',context)
 
+# Featured_Projects
 def featured_projects(request):
     projects= Project.objects.filter(is_featured=True)
     context={
