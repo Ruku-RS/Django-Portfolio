@@ -8,5 +8,7 @@ urlpatterns = [
     path('contact/',views.contact, name='contacts'),
     path('skills/',views.skills, name='skills'),
     path('projects/',views.projects, name='projects'),
+    path('featured/',views.featured_projects, name='featured_projects'),
     path('admin/', admin.site.urls, name='admin'),
+    
 ]

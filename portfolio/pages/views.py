@@ -26,9 +26,16 @@ def skills(request):
     return render(request, 'pages/skills.html')
 
 def projects(request):
-    projects= Project.objects.all()
+    projects= Project.objects.order_by("-created_at")
 
     context ={
         "projects": projects
     }
     return render(request,'pages/projects.html',context)
+
+def featured_projects(request):
+    projects= Project.objects.filter(is_featured=True)
+    context={
+        "projects":projects
+    }
+    return render(request, 'pages/featured.html',context)
