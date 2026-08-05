@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Project
+from .models import Project, Skill
 
 
 # Create your views here.
@@ -23,7 +23,12 @@ def contact(request):
     return render(request,'pages/contact.html')
 
 def skills(request):
-    return render(request, 'pages/skills.html')
+    skills= Skill.objects.all()
+
+    context={
+        'skills':skills
+    }
+    return render(request, 'pages/skills.html',context)
 
 def projects(request):
     projects= Project.objects.order_by("-created_at")

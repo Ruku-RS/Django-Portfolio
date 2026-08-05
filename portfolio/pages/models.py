@@ -12,3 +12,10 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+class Skill(models.Model):
+    title= models.CharField(max_length=150)
+    description= models.TextField()
+
+    def __str__(self):
+        return self.title

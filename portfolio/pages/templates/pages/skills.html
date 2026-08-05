@@ -8,6 +8,13 @@ Skills
 
 {% block content%}
 
-<h2> This is the Skills page </h2>
+<h2>My Skills </h2>
+{% for skill in skills %}
+<div class='skill'>
+    <h3>{{skill.title}}</h3>
+    <p>{{skill.description}}</p>
+</div>
+<hr>
+{% endfor %}
 
 {%endblock%}
