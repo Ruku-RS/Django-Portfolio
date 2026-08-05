@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Project
 
 
 # Create your views here.
@@ -26,4 +26,9 @@ def skills(request):
     return render(request, 'pages/skills.html')
 
 def projects(request):
-    return render(request,'pages/projects.html')
+    projects= Project.objects.all()
+
+    context ={
+        "projects": projects
+    }
+    return render(request,'pages/projects.html',context)
