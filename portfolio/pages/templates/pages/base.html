@@ -23,6 +23,16 @@
         <a href= "{% url 'skills' %}">Skills</a>|
     </nav>
     <hr>
+
+    <!--Flash messages-->
+    {% if messages %}
+        {%for message in messages %}
+            <div class="messgae {{message.tags}}">
+                {{message}}
+            </div>
+        {%endfor%}
+    {%endif%}
+
     {% block content %}
     {% endblock %}
     <hr>

@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect
 from .models import Project, Skill
 from .forms import ContactForm
+from django.contrib import messages
 
 # Create your views here.
 
 # Home
 def home(request):
+    messages.info(
+                request, "Welcome to the portfolio!"
+            )
     context ={
         "name": "Rukman Subedi",
         "college": "Birendra Multiple Campus",
@@ -26,6 +30,15 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(
+                request, "Your message has been sent successfully!"
+            )
+            messages.error(
+                request, "Something went wrong!"
+            )
+            messages.warning(
+                request, "Your password will expire soon."
+            )
             return redirect('contacts')
     else:
         form=ContactForm()
