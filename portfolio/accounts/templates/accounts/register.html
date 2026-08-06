@@ -1,0 +1,21 @@
+{% extends "pages/base.html" %}
+{% load static %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<h2>Create Your Portfolio Account</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">
+        Register
+    </button>
+</form>
+{% endblock content %}
