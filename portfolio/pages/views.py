@@ -7,9 +7,7 @@ from django.contrib import messages
 
 # Home
 def home(request):
-    messages.info(
-                request, "Welcome to the portfolio!"
-            )
+    
     context ={
         "name": "Rukman Subedi",
         "college": "Birendra Multiple Campus",
@@ -39,6 +37,9 @@ def contact(request):
             messages.warning(
                 request, "Your password will expire soon."
             )
+            messages.info(
+                request, "Welcome to the portfolio!"
+            )
             return redirect('contacts')
     else:
         form=ContactForm()
@@ -58,7 +59,7 @@ def skills(request):
 
 # Projects
 def projects(request):
-    projects= Project.objects.order_by("-created_at")
+    projects= Project.objects.order_by("-is_featured")
 
     context ={
         "projects": projects
