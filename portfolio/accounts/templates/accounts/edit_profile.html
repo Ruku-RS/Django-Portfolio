@@ -1,0 +1,24 @@
+{% extends "pages/base.html" %}
+
+{% block title %}
+Edit Profile
+{% endblock %}
+
+{% block content %}
+
+<h2>Edit Profile</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {% if user.profile.image %}
+        <img src="{{ user.profile.image.url }}" width="150">
+    {% endif %}
+
+    {{ form.as_p }}
+
+    <button type="submit">
+        Save Changes
+    </button>
+</form>
+
+{% endblock %}

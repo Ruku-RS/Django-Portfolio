@@ -16,7 +16,7 @@ class Profile(models.Model):
         blank=True,
     )
     website =models.URLField(
-        blank=True,
+        blank= True,
     )
     image= models.ImageField(
         upload_to="profiles/",
