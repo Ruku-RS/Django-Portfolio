@@ -15,6 +15,9 @@ urlpatterns = [
 
     path('featured/',views.featured_projects, name='featured_projects'),
 
+    path('dashboard/', views.dashboard, name="dashboard"),
+
     path('admin/', admin.site.urls, name='admin'),
+
     
 ]

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Project, Skill
 from .forms import ContactForm
 from django.contrib import messages
@@ -73,3 +74,8 @@ def featured_projects(request):
         "projects":projects
     }
     return render(request, 'pages/featured.html',context)
+
+# Dashboard
+@login_required
+def dashboard(request):
+    return render(request, 'pages/dashboard.html')
