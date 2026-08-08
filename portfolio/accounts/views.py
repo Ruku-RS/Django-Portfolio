@@ -4,6 +4,8 @@ from django.contrib.auth import login, logout
 from django.contrib import messages
 from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -68,3 +70,9 @@ def edit_profile(request):
         form = ProfileForm(instance=profile)
 
     return render(request,"accounts/edit_profile.html",{"form":form})        
+
+@login_required
+def admin_test(request):
+    if not request.user.is_superuser:
+        raise PermissionDenied
+    return HttpResponse('Welcome Admin!')

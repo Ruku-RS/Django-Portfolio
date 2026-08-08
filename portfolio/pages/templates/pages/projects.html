@@ -9,6 +9,14 @@ Projects
 {% block content%}
 
 <h2>My Projects </h2>
+
+{% if perms.pages.add_project %}
+
+    <a href="{% url 'create_project' %}">
+        Add Project
+    </a>
+
+{% endif %}
 {% for project in projects %}
 <div class='project'>
     {% if project.image %}

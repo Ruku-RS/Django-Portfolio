@@ -54,6 +54,8 @@ urlpatterns = [
     name="password_reset_complete",
     ),
 
+    # Admin test
+    path('admin-test/',views.admin_test,name='admin_test'),
 ]
 
 if settings.DEBUG:

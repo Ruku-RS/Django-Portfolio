@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Project, Skill
 from .forms import ContactForm
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -79,3 +81,13 @@ def featured_projects(request):
 @login_required
 def dashboard(request):
     return render(request, 'pages/dashboard.html')
+
+# Authorization
+@login_required
+def create_project(request):
+    if not request.user.has_perm('pages.add_project'):
+        #allow user to create project
+        raise PermissionDenied
+    else:
+        #deny access
+        pass
