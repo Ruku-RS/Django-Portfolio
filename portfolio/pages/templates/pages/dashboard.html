@@ -12,6 +12,12 @@ Dashboard
     Welcome {{ user.username }}
 </h3>
 
+<nav>
+    <a href="{%url 'password_change'%}">
+        Change Password
+    </a>
+</nav>
+
 {% if user.profile.image %}
     <img src="{{ user.profile.image.url }}" width="150">
 {% endif %}
