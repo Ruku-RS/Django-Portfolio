@@ -62,9 +62,7 @@ def skills(request):
 
 # Projects
 def projects(request):
-    projects= Project.objects.filter(
-        owner=request.user
-    ).order_by("-is_featured")
+    projects= Project.objects.order_by("-is_featured")
 
     return render(request,'pages/projects.html',{
         "projects": projects
