@@ -5,6 +5,7 @@ from .forms import ContactForm, ProjectForm
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -62,12 +63,13 @@ def skills(request):
 
 # Projects
 def projects(request):
-    projects= Project.objects.order_by("-is_featured")
+    projects= Project.objects.filter(
+        owner=request.user
+    ).order_by("-is_featured")
 
-    context ={
+    return render(request,'pages/projects.html',{
         "projects": projects
-    }
-    return render(request,'pages/projects.html',context)
+    })
 
 # Featured_Projects
 def featured_projects(request):
@@ -82,17 +84,7 @@ def featured_projects(request):
 def dashboard(request):
     return render(request, 'pages/dashboard.html')
 
-# Authorization
-@login_required
-def create_project(request):
-    if not request.user.has_perm('pages.add_project'):
-        #allow user to create project
-        raise PermissionDenied
-    else:
-        #deny access
-        pass
-
-# Project creation by owner.
+# Project creation.
 @login_required
 def create_project(request):
     if request.method=='POST':
@@ -101,8 +93,37 @@ def create_project(request):
             project = form.save(commit=False)
             project.owner= request.user
             project.save()
-            return redirect('project_list')
+            return redirect('projects')
     else:
         form = ProjectForm()
 
     return render(request, 'pages/create_project.html',{'form':form})
+
+# Edit project
+@login_required
+def edit_project(request, project_id):
+    project = get_object_or_404(
+        Project,
+        id=project_id,
+        owner= request.user
+    )
+    if request.method == "POST":
+        form = ProjectForm(
+            request.POST,
+            instance=project
+        )
+        if form.is_valid():
+            form.save()
+            return redirect("projects")
+    else:
+        form = ProjectForm(
+            instance=project
+        )
+    return render(
+        request,
+        "pages/edit_project.html",
+        {
+            "form": form,
+            "project": project
+        }
+    )

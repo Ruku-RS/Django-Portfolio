@@ -17,6 +17,10 @@ urlpatterns = [
 
     path('dashboard/', views.dashboard, name="dashboard"),
 
+    path('projects/create/',views.create_project, name='create_project'),
+
+    path('projects/<int:project_id>/edit/',views.edit_project, name="edit_project"),
+
     path('admin/', admin.site.urls, name='admin'),
 
     
