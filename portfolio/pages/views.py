@@ -1,11 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Project, Skill
 from .forms import ContactForm, ProjectForm
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -125,5 +124,22 @@ def edit_project(request, project_id):
         {
             "form": form,
             "project": project
+        }
+    )
+
+# Delete Project
+@login_required
+def delete_project(request, project_id):
+    project= get_object_or_404(
+        Project,
+        id= project_id,
+        owner= request.user
+    )
+    if request.method=='POST':
+        project.delete()
+        return redirect('projects')
+    return render(
+        request, 'pages/delete_project.html',{
+            "project":project
         }
     )

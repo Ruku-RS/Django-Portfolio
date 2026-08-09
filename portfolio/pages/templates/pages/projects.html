@@ -20,6 +20,7 @@ Projects
 {% for project in projects %}
 {%if user == project.owner%}
     <a href="{%url 'edit_project' project.id %}" style='margin: 10px'>Edit Project</a>
+    <a href="{%url 'delete_project' project.id %}" style="color:red">Delete</a>
 {%endif%}
     <div class='project'>
     {% if project.image %}
@@ -41,6 +42,7 @@ Projects
     <p> You haven't created any projects yet.</p>
     </div>
     <hr>
+   
 {% endfor %}
 
 {%endblock%}
