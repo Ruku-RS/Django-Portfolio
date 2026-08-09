@@ -1,5 +1,5 @@
 from django import forms
-from .models import ContactMessage
+from .models import ContactMessage, Project
 
 class ContactForm(forms.ModelForm):    
     class Meta:
@@ -55,3 +55,11 @@ class ContactForm(forms.ModelForm):
                 "Name must contain at least 2 characters."
             )
         return name
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields =[
+            "title",
+            "description",
+        ]

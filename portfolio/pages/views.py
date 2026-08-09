@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Project, Skill
-from .forms import ContactForm
+from .forms import ContactForm, ProjectForm
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
@@ -91,3 +91,18 @@ def create_project(request):
     else:
         #deny access
         pass
+
+# Project creation by owner.
+@login_required
+def create_project(request):
+    if request.method=='POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.owner= request.user
+            project.save()
+            return redirect('project_list')
+    else:
+        form = ProjectForm()
+
+    return render(request, 'pages/create_project.html',{'form':form})
