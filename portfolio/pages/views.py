@@ -84,6 +84,9 @@ def dashboard(request):
 # Project creation.
 @login_required
 def create_project(request):
+    if not request.user.has_perm("pages.add_project"):
+        raise PermissionDenied
+    
     if request.method=='POST':
         form = ProjectForm(request.POST)
         if form.is_valid():
