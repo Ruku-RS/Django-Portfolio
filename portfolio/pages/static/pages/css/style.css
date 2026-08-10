@@ -8,323 +8,183 @@ body {
    HEADINGS
 ========================= */
 h1 {
-
     color: #0f69bc;
-
 }
-
 
 /* =========================
    PARAGRAPHS
 ========================= */
 
 p {
-
     color: #555;
-
     font-size: 18px;
-
 }
-
-
 /* =========================
    PROJECTS
 ========================= */
-
 .projects-container {
-
     max-width: 1200px;
-
     margin: 0 auto;
-
 }
-
-
 /* Projects heading + Add button */
-
 .projects-header {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     margin-bottom: 30px;
-
 }
-
-
 /* Project cards container */
-
 .projects-grid {
-
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 25px;
-
 }
-
 
 /* Individual project card */
-
 .project {
-
     padding: 25px;
-
     margin: 0;
-
     border: 1px solid #ddd;
-
     border-radius: 10px;
-
     background-color: #ffffff;
-
     box-sizing: border-box;
-
 }
-
 
 /* Project title */
-
 .project h3 {
-
     margin-top: 0;
-
     margin-bottom: 10px;
-
     color: #111;
-
 }
-
 
 /* Project description */
 
 .project p {
-
     margin-bottom: 15px;
-
 }
-
 
 /* GitHub link */
-
 .project a {
-
     display: inline-block;
-
     margin-bottom: 15px;
-
 }
-
 
 /* Created date */
-
 .project .created-date {
-
     font-size: 14px;
-
     color: #777;
-
 }
-
 
 /* =========================
    PROJECT BUTTONS
 ========================= */
 
 .project-actions {
-
     display: flex;
-
     gap: 10px;
-
     margin-top: 15px;
-
 }
-
 
 .project-actions a {
-
     padding: 8px 14px;
-
     border-radius: 6px;
-
     text-decoration: none;
-
     margin-bottom: 0;
-
 }
-
 
 .edit-btn {
-
     background-color: #2563eb;
-
     color: white;
-
 }
-
 
 .delete-btn {
-
     background-color: #dc2626;
-
     color: white;
-
 }
-
 
 /* Add project button */
-
 .add-project-btn {
-
     padding: 10px 16px;
-
     background-color: #16a34a;
-
     color: white;
-
     text-decoration: none;
-
     border-radius: 6px;
-
 }
-
 
 .add-project-btn:hover,
-
 .edit-btn:hover,
-
 .delete-btn:hover {
-
     opacity: 0.85;
-
 }
-
 
 /* No projects message */
-
 .no-projects {
-
     grid-column: 1 / -1;
-
     text-align: center;
-
 }
-
 
 /* =========================
    SKILLS
 ========================= */
-
 .skill {
-
     padding: 20px;
-
     margin: 20px 0;
-
     border: 1px solid #ddd;
-
     border-radius: 10px;
-
 }
-
 
 .skill h3 {
-
     margin-bottom: 10px;
-
 }
-
 
 /* =========================
    FORMS
 ========================= */
-
 form {
-
     width: 500px;
-
     margin: 30px auto;
-
 }
-
 
 form p {
-
     margin-bottom: 20px;
-
 }
-
 
 input,
-
 textarea {
-
     width: 100%;
-
     padding: 10px;
-
     font-size: 16px;
-
 }
-
 
 button {
-
     padding: 10px 20px;
-
     cursor: pointer;
-
 }
-
 
 button:hover {
-
     opacity: 0.9;
-
 }
-
 
 /* =========================
    MESSAGES
 ========================= */
-
 .message {
-
     padding: 15px;
-
     margin: 20px auto;
-
     width: 500px;
-
     border-radius: 8px;
-
     font-weight: bold;
-
 }
-
 
 .success {
-
     background: #d4edda;
-
     color: #155724;
-
     border: 1px solid #c3e6cb;
-
 }
 
-
 .error {
-
     background: #f8d7da;
-
     color: #721c24;
-
 }
 
 
