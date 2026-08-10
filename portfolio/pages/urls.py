@@ -1,5 +1,4 @@
 from django.urls import path
-from django.contrib import admin
 from . import views
 
 urlpatterns = [
@@ -22,8 +21,5 @@ urlpatterns = [
     path('projects/<int:project_id>/edit/',views.edit_project, name="edit_project"),
 
     path('project/<int:project_id>/delete', views.delete_project, name='delete_project'),
-
-    path('admin/', admin.site.urls, name='admin'),
-
     
 ]

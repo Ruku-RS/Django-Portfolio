@@ -8,7 +8,7 @@ Create Project
 
 <h1>Create Project</h1>
 
-<form method="POST">
+<form method="POST" enctype='multipart/form-data'>
     {% csrf_token %}
     {{ form.non_field_errors }}
 
@@ -25,9 +25,15 @@ Create Project
     </div>
 
     <div class="form-group">
-        {{ form.github_url.label_tag }}
-        {{ form.github_url }}
-        {{ form.github_url.errors }}
+        {{ form.github_link.label_tag }}
+        {{ form.github_link }}
+        {{ form.github_link.errors }}
+    </div>
+
+     <div class="form-group">
+        {{ form.image.label_tag }}
+        {{ form.image }}
+        {{ form.image.errors }}
     </div>
 
     <div class="form-group">

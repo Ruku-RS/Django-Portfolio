@@ -88,7 +88,10 @@ def create_project(request):
         raise PermissionDenied
     
     if request.method=='POST':
-        form = ProjectForm(request.POST)
+        form = ProjectForm(
+            request.POST,
+            request.FILES,
+            )
         if form.is_valid():
             project = form.save(commit=False)
             project.owner= request.user
@@ -110,6 +113,7 @@ def edit_project(request, project_id):
     if request.method == "POST":
         form = ProjectForm(
             request.POST,
+            request.FILES,
             instance=project
         )
         if form.is_valid():

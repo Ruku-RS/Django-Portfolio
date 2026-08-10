@@ -60,7 +60,8 @@ class ProjectForm(forms.ModelForm):
         fields =[
             "title",
             "description",
-            "github_url",
+            "github_link",
+            "image",
             "is_featured",
         ]
         widgets={
@@ -77,13 +78,18 @@ class ProjectForm(forms.ModelForm):
                     "rows": 5,
                 }
             ),
-            "github_url": forms.URLInput(
+            "github_link": forms.URLInput(
                 attrs={
                     "placeholder": "https://github.com/username/project",
                     "class": "form-input",
                 }
             ),
 
+            "image": forms.ClearableFileInput(
+                attrs={
+                    "class": "form-input",
+                }
+            ),
             "is_featured": forms.CheckboxInput(
                 attrs={
                     "class": "form-checkbox",
@@ -93,7 +99,8 @@ class ProjectForm(forms.ModelForm):
         labels ={
             "title": "Project Name",
             "description":"Project Description",
-            "github_url": "GitHub Repository",
+            "github_link": "GitHub Repository",
+            "image": "Project Image",
             "is_featured": "Featured Project",
         }
 
