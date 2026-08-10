@@ -36,8 +36,7 @@ Projects
                     Created at: {{ project.created_at }}
                 </p>
 
-                {% if user.is_authenticated %}
-                    {% if user == project.owner %}
+                {% if user.is_authenticated and project.owner == user %}
                         <div class="project-actions">
                             <a
                                 href="{% url 'edit_project' project.id %}"
@@ -52,7 +51,6 @@ Projects
                                 Delete
                             </a>
                         </div>
-                    {% endif %}
                 {% endif %}
             </div>
 
