@@ -9,13 +9,11 @@ class ContactForm(forms.ModelForm):
             "email",
             "message",
         }
-
         labels={
             "name": "Full Name",
             "email": "Email ",
             "message": "Your Message",
         }
-
         widgets={
             "name": forms.TextInput(
                 attrs={
@@ -62,4 +60,61 @@ class ProjectForm(forms.ModelForm):
         fields =[
             "title",
             "description",
+            "github_url",
+            "is_featured",
         ]
+        widgets={
+            "title": forms.TextInput(
+                attrs={
+                    "placeholder":"Enter project title",
+                    "class":"form-input",
+                }
+            ),
+            "description": forms.Textarea(
+                attrs={
+                    "placeholder":"Describe your project",
+                    "class": "form-input",
+                    "rows": 5,
+                }
+            ),
+            "github_url": forms.URLInput(
+                attrs={
+                    "placeholder": "https://github.com/username/project",
+                    "class": "form-input",
+                }
+            ),
+
+            "is_featured": forms.CheckboxInput(
+                attrs={
+                    "class": "form-checkbox",
+                }
+            ),
+        }
+        labels ={
+            "title": "Project Name",
+            "description":"Project Description",
+            "github_url": "GitHub Repository",
+            "is_featured": "Featured Project",
+        }
+
+# Project title validation
+def clean_title(self):
+    title = self.cleaned_data["title"]
+    if len(title) < 3:
+        raise forms.ValidationError(
+            "Project title must be at least 3 characters long."
+        )
+    return title
+
+# Multiple field validation (to validate that featured project must have github repository)
+def clean(self):
+    cleaned_data = super().clean()
+
+    is_featured = cleaned_data.get('is_featured')
+    github_url = cleaned_data.get("github_url")
+
+    if is_featured and not github_url:
+        raise forms.ValidationError(
+            "Featured projects must have a Github Repository."
+        )
+    return cleaned_data
