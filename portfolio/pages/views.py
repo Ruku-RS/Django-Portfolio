@@ -34,15 +34,6 @@ def contact(request):
             messages.success(
                 request, "Your message has been sent successfully!"
             )
-            messages.error(
-                request, "Something went wrong!"
-            )
-            messages.warning(
-                request, "Your password will expire soon."
-            )
-            messages.info(
-                request, "Welcome to the portfolio!"
-            )
             return redirect('contacts')
     else:
         form=ContactForm()
