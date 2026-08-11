@@ -70,6 +70,18 @@ class ProjectDetailView(DetailView):
     template_name= 'pages/project_detail.html'
     context_object_name= 'project'
 
+# Project create view
+class ProjectCreateView(LoginRequiredMixin, CreateView):
+    model= Project
+    form_class= ProjectForm
+    template_name= 'pages/create_project.html'
+    success_url ='/projects/'
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+    
+
 # Featured_Projects
 def featured_projects(request):
     projects= Project.sobjects.filter(is_featured=True)
