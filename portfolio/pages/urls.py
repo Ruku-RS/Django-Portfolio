@@ -20,10 +20,10 @@ urlpatterns = [
 
     path('dashboard/', views.dashboard, name="dashboard"),
 
-    path('projects/create/',views.create_project, name='create_project'),
+    path('projects/create/',views.ProjectCreateView.as_view(), name='create_project'),
 
-    path('projects/<int:project_id>/edit/',views.edit_project, name="edit_project"),
+    path('projects/<int:pk>/edit/',views.ProjectUpdateView.as_view(), name="edit_project"),
 
-    path('project/<int:project_id>/delete', views.delete_project, name='delete_project'),
+    path('project/<int:pk>/delete', views.ProjectDeleteView.as_view(), name='delete_project'),
     
 ]

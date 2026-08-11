@@ -10,42 +10,13 @@ Create Project
 
 <form method="POST" enctype='multipart/form-data'>
     {% csrf_token %}
-    {{ form.non_field_errors }}
-
-    <div class="form-group">
-        {{ form.title.label_tag }}
-        {{ form.title }}
-        {{ form.title.errors }}
-    </div>
-
-    <div class="form-group">
-        {{ form.description.label_tag }}
-        {{ form.description }}
-        {{ form.description.errors }}
-    </div>
-
-    <div class="form-group">
-        {{ form.github_link.label_tag }}
-        {{ form.github_link }}
-        {{ form.github_link.errors }}
-    </div>
-
-     <div class="form-group">
-        {{ form.image.label_tag }}
-        {{ form.image }}
-        {{ form.image.errors }}
-    </div>
-
-    <div class="form-group">
-        {{ form.is_featured }}
-        {{ form.is_featured.label_tag }}
-        {{ form.is_featured.errors }}
-    </div>
-
+    {{form.as_p}}
     <button type="submit">
         Create Project
     </button>
-
 </form>
+<a href="{% url 'projects' %}" class='cancel-btn'>
+    Cancel
+</a>
 
 {% endblock %}

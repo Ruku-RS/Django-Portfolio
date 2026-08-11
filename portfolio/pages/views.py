@@ -80,7 +80,25 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
-    
+
+# Project Update View
+class ProjectUpdateView(LoginRequiredMixin, UpdateView):
+    model= Project
+    form_class= ProjectForm
+    template_name= 'pages/edit_project.html'
+    success_url= '/projects/'    
+
+    def get_queryset(self):
+        return Project.objects.filter(owner=self.request.user)
+
+# Project Delete View
+class ProjectDeleteView(LoginRequiredMixin, DeleteView):
+    model= Project
+    template_name='pages/delete_project.html'
+    success_url= '/projects/'
+
+    def get_queryset(self):
+        return Project.objects.filter(owner=self.request.user)
 
 # Featured_Projects
 def featured_projects(request):
