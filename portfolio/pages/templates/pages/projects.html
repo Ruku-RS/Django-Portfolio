@@ -19,6 +19,9 @@ Projects
     <div class="projects-grid">
         {% for project in projects %}
             <div class="project">
+                {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                {% endif %}
                 <h3>{{ project.title }}</h3>
                 <p>
                     {{ project.description }}
@@ -35,6 +38,7 @@ Projects
                     Created at: {{ project.created_at }}
                 </p>
 
+                <!--Only the project owner can make changes here-->
                 {% if user.is_authenticated and project.owner == user %}
                         <div class="project-actions">
                             <a

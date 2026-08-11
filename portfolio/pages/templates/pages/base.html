@@ -9,7 +9,7 @@
         {% endblock  %}
     </title>
     <link rel='stylesheet' href="{% static 'pages/css/style.css' %}">
-    {% block extra_css %}{% endblock extra_css %}
+    
 </head>
 <body>
     <!--Header-->
@@ -52,16 +52,18 @@
     {%endif%}
 
     <!--Main content block-->
-    {% block content %}
-    {%if messages%}
-        {%for message in messages%}
-            <div class="message{{message.tags}}">
-                {{message}}
-            </div>
-        {%endfor%}
-    {%endif%}    
-    {% endblock %}
-    <hr>
+    <main>
+        {% block content %}
+        {%if messages%}
+            {%for message in messages%}
+                <div class="message{{message.tags}}">
+                    {{message}}
+                </div>
+            {%endfor%}
+        {%endif%}    
+        {% endblock %}
+        <hr>
+    </main>
 
     <!--Footer-->
     <footer>
