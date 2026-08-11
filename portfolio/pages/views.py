@@ -96,6 +96,9 @@ def create_project(request):
             project = form.save(commit=False)
             project.owner= request.user
             project.save()
+            messages.success(
+                request, "Project created successfully!"
+            )
             return redirect('projects')
     else:
         form = ProjectForm()
@@ -118,6 +121,10 @@ def edit_project(request, project_id):
         )
         if form.is_valid():
             form.save()
+            messages.success(
+                request,
+                "Project updated successfully!"
+            )
             return redirect("projects")
     else:
         form = ProjectForm(
@@ -142,6 +149,10 @@ def delete_project(request, project_id):
     )
     if request.method=='POST':
         project.delete()
+        messages.success(
+            request,
+            "Project deleted successfully!"
+        )
         return redirect('projects')
     return render(
         request, 'pages/delete_project.html',{
