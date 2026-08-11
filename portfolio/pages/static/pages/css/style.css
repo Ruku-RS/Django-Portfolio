@@ -147,6 +147,20 @@ p {
 }
 
 
+.edit-btn,
+.delete-btn,
+.cancel-btn{
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
 /* Edit */
 
 .edit-btn {
@@ -162,6 +176,11 @@ p {
     color: white;
 }
 
+/* Cancel */
+.cancel-btn{
+    background-color: #777;
+    color: white;
+}
 
 /* =========================
    ADD PROJECT BUTTON
@@ -179,10 +198,14 @@ p {
 
 .add-project-btn:hover,
 .edit-btn:hover,
-.delete-btn:hover {
+.delete-btn:hover,
+.cancel-btn:hover{
     opacity: 0.85;
 }
 
+.cancel-btn:hover{
+    background-color: red;
+}
 
 /* =========================
    NO PROJECTS MESSAGE
@@ -213,7 +236,6 @@ p {
     margin-bottom: 10px;
 }
 
-
 /* =========================
    FORMS
 ========================= */
@@ -228,7 +250,6 @@ form p {
     margin-bottom: 20px;
 }
 
-
 input,
 textarea {
     width: 100%;
@@ -237,18 +258,15 @@ textarea {
     box-sizing: border-box;
 }
 
-
 textarea {
     min-height: 150px;
     resize: vertical;
 }
 
-
 button {
     padding: 10px 20px;
     cursor: pointer;
 }
-
 
 button:hover {
     opacity: 0.9;
@@ -312,13 +330,11 @@ button:hover {
     box-sizing: border-box;
 }
 
-
 .success {
     background: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
 }
-
 
 .error {
     background: #f8d7da;
@@ -326,13 +342,11 @@ button:hover {
     border: 1px solid #f5c6cb;
 }
 
-
 .warning {
     background: #fff3cd;
     color: #856404;
     border: 1px solid #ffeeba;
 }
-
 
 .info {
     background: #d1ecf1;
@@ -346,13 +360,10 @@ button:hover {
 ========================= */
 
 @media (max-width: 900px) {
-
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
 }
-
 
 @media (max-width: 600px) {
 

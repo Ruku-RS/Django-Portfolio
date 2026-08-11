@@ -17,13 +17,13 @@ Delete Project
 
     {% csrf_token %}
 
-    <button type="submit">
+    <button type="submit" >
         Yes, Delete
     </button>
 
 </form>
 
-<a href="{% url 'projects' %}">
+<a href="{% url 'projects' %}" class='cancel-btn'>
     Cancel
 </a>
 
