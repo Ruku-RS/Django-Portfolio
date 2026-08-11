@@ -1,0 +1,45 @@
+{% extends "pages/base.html" %}
+
+{% block title %}
+{{ project.title }}
+{% endblock title %}
+
+{% block content %}
+
+<div class="project">
+
+    <h2>{{ project.title }}</h2>
+
+    {% if project.image %}
+        <img
+            src="{{ project.image.url }}"
+            alt="{{ project.title }}"
+            width="250"
+        >
+    {% endif %}
+
+    <p>{{ project.description }}</p>
+
+    <p>
+        <strong>Owner:</strong>
+        {{ project.owner.username }}
+    </p>
+
+    <p>
+        <strong>Created:</strong>
+        {{ project.created_at }}
+    </p>
+
+    <p>
+        <a href="{{ project.github_link }}" target="_blank">
+            GitHub Repository
+        </a>
+    </p>
+
+    <a href="{% url 'projects' %}" class="back-to-project">
+        ← Back to Projects
+    </a>
+
+</div>
+
+{% endblock content %}

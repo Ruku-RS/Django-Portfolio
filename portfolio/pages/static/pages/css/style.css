@@ -149,7 +149,9 @@ p {
 
 .edit-btn,
 .delete-btn,
-.cancel-btn{
+.cancel-btn,
+.view,
+.back-to-project{
     display: inline-block;
     padding: 8px 16px;
     font-size: 14px;
@@ -181,7 +183,17 @@ p {
     background-color: #777;
     color: white;
 }
+/* View Project*/
+.view{
+    background-color: #2563eb;
+    color: white;
+}
 
+/* Back to Project*/
+.back-to-project{
+    background-color: #4d5466;
+    color: #fbfbfd;
+}
 /* =========================
    ADD PROJECT BUTTON
 ========================= */
@@ -199,12 +211,15 @@ p {
 .add-project-btn:hover,
 .edit-btn:hover,
 .delete-btn:hover,
-.cancel-btn:hover{
+.cancel-btn:hover,
+.view:hover,
+.back-to-project:hover{
     opacity: 0.85;
 }
 
-.cancel-btn:hover{
-    background-color: red;
+.cancel-btn:hover,
+.back-to-project:hover{
+    background-color: #b84a2f;
 }
 
 /* =========================
@@ -354,6 +369,47 @@ button:hover {
     border: 1px solid #bee5eb;
 }
 
+/* =========================
+   PROJECT DETAIL
+========================= */
+
+.project-detail {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.project-detail h1 {
+    color: #0f69bc;
+    margin-bottom: 20px;
+}
+
+.project-detail p {
+    line-height: 1.6;
+}
+
+.project-detail-image {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.project-detail .btn {
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+.project-detail .delete-btn {
+    background-color: #dc2626;
+}
 
 /* =========================
    RESPONSIVE

@@ -5,6 +5,10 @@ from .forms import ContactForm, ProjectForm
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import (
+    ListView, DetailView, CreateView, UpdateView, DeleteView,
+)
 
 # Create your views here.
 
@@ -51,17 +55,24 @@ def skills(request):
     }
     return render(request, 'pages/skills.html',context)
 
-# Projects
-def projects(request):
-    projects= Project.objects.order_by("-is_featured")
+# Projects List View
+class ProjectListView(ListView):
+    model= Project
+    template_name ='pages/projects.html'
+    context_object_name = 'projects'
 
-    return render(request,'pages/projects.html',{
-        "projects": projects
-    })
+    def get_queryset(self):
+        return Project.objects.order_by('-is_featured')
+
+# Project Detail View
+class ProjectDetailView(DetailView):
+    model= Project
+    template_name= 'pages/project_detail.html'
+    context_object_name= 'project'
 
 # Featured_Projects
 def featured_projects(request):
-    projects= Project.objects.filter(is_featured=True)
+    projects= Project.sobjects.filter(is_featured=True)
     context={
         "projects":projects
     }
