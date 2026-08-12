@@ -117,8 +117,20 @@ def feature_project(request, project_id):
         id = project_id
     )
 
-    project.is_featured = True
-    project.save()
+    if project.is_featured:
+        project.is_featured = False
+        project.save()
+        messages.success(
+            request, 
+            f'"{project.title}" has been removed from featured projects.'
+        )
+    else:
+        project.is_featured= True
+        project.save()
+        messages.success(
+            request,
+            f'"{project.title}" has been added to featured projects.'
+        )
 
     return redirect('projects')
 

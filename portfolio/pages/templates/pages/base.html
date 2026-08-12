@@ -44,11 +44,13 @@
 
     <!--Flash messages-->
     {% if messages %}
-        {%for message in messages %}
-            <div class="messgae {{message.tags}}">
-                {{message}}
-            </div>
-        {%endfor%}
+        <div class= 'messages'>
+            {%for message in messages %}
+                <div class="messgae {{message.tags}}">
+                    {{message}}
+                </div>
+            {%endfor%}
+        </div>
     {%endif%}
 
     <!--Main content block-->

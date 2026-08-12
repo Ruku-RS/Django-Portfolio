@@ -47,14 +47,19 @@ Projects
                 </p>
 
                 {% if perms.pages.feature_project %}
+                    {%if project.is_featured%}
 
-                <a
-                    href="{% url 'feature_project' project.id %}"
-                    class="feature-btn"
-                >
-                    Feature Project
-                </a>
-
+                        <a
+                            href="{% url 'feature_project' project.id %}"
+                            class="unfeature-btn"
+                        >
+                            Remove from Feature
+                        </a>
+                    {% else %}
+                        <a href= "{%url 'feature_project' project.id %}" class='feature-btn'>
+                            Feature Project
+                        </a>
+                    {%endif%}
                 {% endif %}
                             
                 <!--Only the project owner can make changes here-->
