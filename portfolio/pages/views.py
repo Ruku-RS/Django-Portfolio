@@ -5,7 +5,7 @@ from .forms import ContactForm, ProjectForm
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView,
 )
@@ -71,11 +71,13 @@ class ProjectDetailView(DetailView):
     context_object_name= 'project'
 
 # Project create view
-class ProjectCreateView(LoginRequiredMixin, CreateView):
+class ProjectCreateView(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model= Project
     form_class= ProjectForm
     template_name= 'pages/create_project.html'
     success_url ='/projects/'
+
+    permission_required ='pages.add_project'
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
