@@ -84,11 +84,13 @@ class ProjectCreateView(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
         return super().form_valid(form)
 
 # Project Update View
-class ProjectUpdateView(LoginRequiredMixin, UpdateView):
+class ProjectUpdateView(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model= Project
     form_class= ProjectForm
     template_name= 'pages/edit_project.html'
     success_url= '/projects/'    
+
+    permission_required= 'pages.change_project'
 
     def get_queryset(self):
         return Project.objects.filter(owner=self.request.user)
