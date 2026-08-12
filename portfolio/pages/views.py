@@ -96,10 +96,12 @@ class ProjectUpdateView(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
         return Project.objects.filter(owner=self.request.user)
 
 # Project Delete View
-class ProjectDeleteView(LoginRequiredMixin, DeleteView):
+class ProjectDeleteView(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model= Project
     template_name='pages/delete_project.html'
     success_url= '/projects/'
+
+    permission_required= 'pages.delete_project'
 
     def get_queryset(self):
         return Project.objects.filter(owner=self.request.user)
