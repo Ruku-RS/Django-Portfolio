@@ -16,7 +16,7 @@ urlpatterns = [
     # project detail view (single project)
     path('projects/<int:pk>/', views.ProjectDetailView.as_view(), name='project_detail'),
 
-    path('featured/',views.featured_projects, name='featured_projects'),
+    path('projects/<int:project_id>/featured',views.feature_project, name='feature_project'),
 
     path('dashboard/', views.dashboard, name="dashboard"),
 

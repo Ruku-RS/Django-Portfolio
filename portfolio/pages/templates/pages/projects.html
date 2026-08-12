@@ -46,7 +46,17 @@ Projects
                     Created at: {{ project.created_at }}
                 </p>
 
-               
+                {% if perms.pages.feature_project %}
+
+                <a
+                    href="{% url 'feature_project' project.id %}"
+                    class="feature-btn"
+                >
+                    Feature Project
+                </a>
+
+                {% endif %}
+                            
                 <!--Only the project owner can make changes here-->
                     {% if perms.pages.change_project and project.owner == user %}
                     <div class="project-actions">

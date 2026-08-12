@@ -10,7 +10,7 @@ from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView,
 )
 
-# Create your views here.
+
 
 # Home
 def home(request):
@@ -106,13 +106,21 @@ class ProjectDeleteView(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     def get_queryset(self):
         return Project.objects.filter(owner=self.request.user)
 
+
 # Featured_Projects
-def featured_projects(request):
-    projects= Project.sobjects.filter(is_featured=True)
-    context={
-        "projects":projects
-    }
-    return render(request, 'pages/featured.html',context)
+def feature_project(request, project_id):
+    if not request.user.has_perm('pages.feature_project'):
+        raise PermissionDenied
+
+    project = get_object_or_404(
+        Project,
+        id = project_id
+    )
+
+    project.is_featured = True
+    project.save()
+
+    return redirect('projects')
 
 # Dashboard
 @login_required

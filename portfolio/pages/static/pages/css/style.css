@@ -151,7 +151,8 @@ p {
 .delete-btn,
 .cancel-btn,
 .view,
-.back-to-project{
+.back-to-project,
+.feature-btn{
     display: inline-block;
     padding: 8px 16px;
     font-size: 14px;
@@ -213,7 +214,8 @@ p {
 .delete-btn:hover,
 .cancel-btn:hover,
 .view:hover,
-.back-to-project:hover{
+.back-to-project:hover,
+.feature-btn:hover{
     opacity: 0.85;
 }
 
