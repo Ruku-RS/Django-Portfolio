@@ -23,6 +23,11 @@ class Project(models.Model):
     
     is_featured = models.BooleanField(default=False)
 
+    class Meta:
+        permissions= [
+            ("feature_project", "Can feature project")
+        ]
+
     def __str__(self):
         return self.title
 
