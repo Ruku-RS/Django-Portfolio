@@ -46,21 +46,20 @@ Projects
                     Created at: {{ project.created_at }}
                 </p>
 
+                <div class="project-actions">
                 <!--Only the project owner can make changes here-->
-                {% if user.is_authenticated and project.owner == user %}
-                        <div class="project-actions">
+                    {% if perms.pages.change_project and project.owner == user %}
                             <a
-                                href="{% url 'edit_project' project.id %}"
+                                href="{% url 'edit_project' project.pk %}"
                                 class="edit-btn"
                             >
                                 Edit Project
                             </a>
-                            <a
-                                href="{% url 'delete_project' project.id %}"
-                                class="delete-btn"
-                            >
-                                Delete
-                            </a>
+                    {%endif%}      
+                    {%if perms.pages.delete_project and project.owner == user %}  
+                <a href="{% url 'delete_project' project.pk %}"class="delete-btn">
+                    Delete
+                </a>
                         </div>
                 {% endif %}
             </div>
