@@ -92,7 +92,7 @@ class ProjectUpdateView(LoginRequiredMixin,PermissionRequiredMixin,UserPassesTes
 
     permission_required= 'pages.change_project'
 
-    def get_queryset(self):
+    def test_func(self):
         return Project.objects.filter(owner=self.request.user)
 
 # Project Delete View
@@ -103,7 +103,7 @@ class ProjectDeleteView(LoginRequiredMixin,PermissionRequiredMixin,UserPassesTes
 
     permission_required= 'pages.delete_project'
 
-    def get_queryset(self):
+    def test_func(self):
         return Project.objects.filter(owner=self.request.user)
 
 
