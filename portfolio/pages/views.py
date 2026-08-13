@@ -84,7 +84,7 @@ class ProjectCreateView(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
         return super().form_valid(form)
 
 # Project Update View
-class ProjectUpdateView(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
+class ProjectUpdateView(LoginRequiredMixin,PermissionRequiredMixin,UserPassesTestMixin, UpdateView):
     model= Project
     form_class= ProjectForm
     template_name= 'pages/edit_project.html'
