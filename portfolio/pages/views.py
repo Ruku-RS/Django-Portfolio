@@ -4,7 +4,7 @@ from .models import Project, Skill
 from .forms import ContactForm, ProjectForm
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.http import HttpResponse
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView,
@@ -75,7 +75,7 @@ class ProjectCreateView(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model= Project
     form_class= ProjectForm
     template_name= 'pages/create_project.html'
-    success_url ='/projects/'
+    success_url = reverse_lazy('projects')
 
     permission_required ='pages.add_project'
 
