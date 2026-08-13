@@ -96,10 +96,10 @@ class ProjectUpdateView(LoginRequiredMixin,PermissionRequiredMixin,UserPassesTes
         return Project.objects.filter(owner=self.request.user)
 
 # Project Delete View
-class ProjectDeleteView(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
+class ProjectDeleteView(LoginRequiredMixin,PermissionRequiredMixin,UserPassesTestMixin, DeleteView):
     model= Project
     template_name='pages/delete_project.html'
-    success_url= '/projects/'
+    success_url= reverse_lazy('projects')
 
     permission_required= 'pages.delete_project'
 
