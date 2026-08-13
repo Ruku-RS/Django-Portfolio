@@ -68,7 +68,31 @@ class ProjectListView(ListView):
 class ProjectDetailView(DetailView):
     model= Project
     template_name= 'pages/project_detail.html'
-    context_object_name= 'project'
+    context_object_name= 'project_detail'
+
+    def get(self, request, *args, **kwargs):
+        project = self.get_object()
+        recently_viewed = request.session.get('recently_viewed', [])
+
+        if project.id in recently_viewed:
+            recently_viewed.remove(project.id)
+        recently_viewed.insert(0, project.id)
+        recently_viewed= recently_viewed[:5]
+        request.session['recently_viewed']= recently_viewed
+
+        return super().get(request, *args, **kwargs)
+
+# Recently Viewed
+def recently_viewed(request):
+    project_ids= request.session.get(
+        "recently_viewed", []
+    )
+    projects = Project.objects.filter(
+        id__in=project_ids
+    )
+
+    return render(request, 
+                'pages/recently_viewed.html',{'projects':projects})
 
 # Project create view
 class ProjectCreateView(LoginRequiredMixin,PermissionRequiredMixin, CreateView):

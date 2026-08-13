@@ -24,6 +24,7 @@
         <a href= "{% url 'projects' %}">Projects</a>|
         <a href= "{% url 'contacts' %}">Contact</a>|
         <a href= "{% url 'skills' %}">Skills</a>|
+        <a href="{% url 'recently_viewed' %}">Recently Viewed</a>|
 
         <!--Login, Register, Logout-->
         {% if user.is_authenticated %}

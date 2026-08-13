@@ -24,6 +24,8 @@ urlpatterns = [
 
     path('projects/<int:pk>/edit/',views.ProjectUpdateView.as_view(), name="edit_project"),
 
+    path('recently-viewed/', views.recently_viewed, name= 'recently_viewed'),
+
     path('project/<int:pk>/delete', views.ProjectDeleteView.as_view(), name='delete_project'),
     
 ]

@@ -1,0 +1,51 @@
+{% extends "pages/base.html" %}
+
+{% block title %}
+Recently Viewed
+{% endblock %}
+
+{% block content %}
+
+<h1>Recently Viewed Projects</h1>
+
+{% if projects %}
+
+    {% for project in projects %}
+
+        <div class="project">
+
+            {% if project.image %}
+                <img
+                    src="{{ project.image.url }}"
+                    alt="{{ project.title }}"
+                >
+            {% endif %}
+
+            <h3>
+                {{ project.title }}
+            </h3>
+
+            <p>
+                {{ project.description }}
+            </p>
+
+            <a
+                href="{% url 'project_detail' project.pk %}"
+                class="btn"
+            >
+                View Project
+            </a>
+
+        </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>
+        You haven't viewed any projects yet.
+    </p>
+
+{% endif %}
+
+{% endblock %}
