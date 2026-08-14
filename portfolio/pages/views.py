@@ -161,7 +161,20 @@ def feature_project(request, project_id):
 # Dashboard
 @login_required
 def dashboard(request):
-    return render(request, 'pages/dashboard.html')
+    project_count= Project.objects.filter(
+        owner=request.user
+    ).count()
+    featured_count =Project.objects.filter(
+        owner=request.user,
+        is_featured=True
+    ).count()
+
+    context={
+        "project_count": project_count,
+        "featured_count": featured_count,
+    }
+
+    return render(request, 'pages/dashboard.html', context)
 
 # Project creation.
 @login_required
